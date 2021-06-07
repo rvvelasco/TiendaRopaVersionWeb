@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://kit.fontawesome.com/9b75147fe3.js" crossorigin="anonymous"></script>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- Mobile First -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="icon" href="ASSETS/IMG/icono.ico">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- CUSTOM CSS -->
+	<link rel="stylesheet" href="ASSETS/CSS/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+	<script>document.write('<script src="http://' + (location.host || 
+    'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' +
+    'script>')
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	//AJAX  Asinchronuos JavaScript XML 
+	function showUser(str) {
+	  if (str == "") {
+	    document.getElementById("txtHint").innerHTML = "";
+	    return;
+	  } else {
+	    var xmlhttp = new XMLHttpRequest(); //XHR
+	    xmlhttp.onreadystatechange = function() {
+	      if (this.readyState == 4 && this.status == 200) {
+	        document.getElementById("txtHint").innerHTML = this.responseText;
+	      }
+	    };
+	    xmlhttp.open("GET","costo.php?q="+str,true);
+	    
+	    xmlhttp.send();
+	  }
+	}
+
+	//AJAX  Asinchronuos JavaScript XML 
+			$(document).ready(function(){
+		  	$("#botonCalcular").click(function(){
+		    elCodigo=$("#codigo").val();
+		    laGanancia=$("#ganancia").val();
+		    var losDatos=elCodigo.concat(':');
+		    losDatos=losDatos.concat(laGanancia);
+		    showUser(losDatos);
+		    
+		  });
+		});
+
+	  
+	</script>
+
+	<title>Calcular</title>
+</head>
+<body>
+	<div class="container-fluid">
+	<header>
+		<nav class="nav text-center">
+			<ul class="nav__ul ">
+				<li class="nav__li"><i class="fas fa-home"></i><a href="index.html">Inicio</a></li>
+				<li class="nav__li"><i class="fas fa-user-friends"></i><a href="Ingresar.html">Ingresar</a></li>
+				<li class="nav__li"><i class="fas fa-money-bill-wave"></i><a href="Buscar.html">Buscar</a></li>
+				<li class="nav__li"><i class="fas fa-hands-helping"></i><a href="Calcular.html">Calcular</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="text-center">
+
+	<h3 class="text-center">Calcular precio:</h3>
+		<div>
+		<label>Ingrese codigo del producto:</label>
+		<input type="text" id="codigo"><br>
+		</div>
+		<div>
+		<label>Porcentaje de ganacia:</label>
+		<input type="text" id="ganancia"><br>
+		</div>
+		<div>
+			<input type="submit" value="calcular" id="botonCalcular">
+		</div>
+	
+		<div id="txtHint"><b>El precio de venta será de :</b></div>
+
+	</div>
+<!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</div>
+</body>
+</html>
